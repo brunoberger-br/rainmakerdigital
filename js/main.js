@@ -1,15 +1,15 @@
 /**
  * Rainmaker Digital - Main JavaScript
- * Handles scroll-triggered animations, navigation behavior, and mobile menu
+ * Handles ambient effects, scroll animations, navigation, and mobile menu
  */
 
 (function() {
     'use strict';
 
-    // Wait for DOM to be ready
     document.addEventListener('DOMContentLoaded', init);
 
     function init() {
+        initRainCanvas();
         initNavigation();
         initRevealAnimations();
         initSmoothScroll();
@@ -17,8 +17,96 @@
     }
 
     /**
+     * Rain Canvas - Subtle ambient particle effect
+     */
+    function initRainCanvas() {
+        const canvas = document.getElementById('rain-canvas');
+        if (!canvas) return;
+
+        // Check for reduced motion preference
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            canvas.style.display = 'none';
+            return;
+        }
+
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        let animationId;
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        function createParticle() {
+            return {
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height - canvas.height,
+                length: Math.random() * 20 + 10,
+                speed: Math.random() * 2 + 1,
+                opacity: Math.random() * 0.3 + 0.1,
+                thickness: Math.random() * 1.5 + 0.5
+            };
+        }
+
+        function initParticles() {
+            particles = [];
+            const particleCount = Math.floor((canvas.width * canvas.height) / 25000);
+            for (let i = 0; i < Math.min(particleCount, 100); i++) {
+                const p = createParticle();
+                p.y = Math.random() * canvas.height;
+                particles.push(p);
+            }
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            particles.forEach((p, i) => {
+                ctx.beginPath();
+                ctx.moveTo(p.x, p.y);
+                ctx.lineTo(p.x + p.length * 0.3, p.y + p.length);
+                ctx.strokeStyle = `rgba(2, 116, 190, ${p.opacity})`;
+                ctx.lineWidth = p.thickness;
+                ctx.lineCap = 'round';
+                ctx.stroke();
+
+                p.y += p.speed;
+                p.x += p.speed * 0.3;
+
+                if (p.y > canvas.height) {
+                    particles[i] = createParticle();
+                }
+            });
+
+            animationId = requestAnimationFrame(draw);
+        }
+
+        resize();
+        initParticles();
+        draw();
+
+        let resizeTimeout;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(function() {
+                resize();
+                initParticles();
+            }, 250);
+        }, { passive: true });
+
+        // Pause animation when tab is not visible
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                cancelAnimationFrame(animationId);
+            } else {
+                draw();
+            }
+        });
+    }
+
+    /**
      * Navigation scroll behavior
-     * Adds shadow and updates styling when user scrolls
      */
     function initNavigation() {
         const nav = document.getElementById('nav');
@@ -42,7 +130,6 @@
             }
         }, { passive: true });
 
-        // Initial check
         updateNav();
     }
 
@@ -51,21 +138,18 @@
      */
     function initRevealAnimations() {
         const reveals = document.querySelectorAll('.reveal');
-
         if (!reveals.length) return;
 
-        // Check for reduced motion preference
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
         if (prefersReducedMotion) {
-            // If user prefers reduced motion, show all elements immediately
             reveals.forEach(el => el.classList.add('is-visible'));
             return;
         }
 
         const observerOptions = {
             root: null,
-            rootMargin: '0px 0px -100px 0px',
+            rootMargin: '0px 0px -80px 0px',
             threshold: 0.1
         };
 
@@ -73,7 +157,6 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('is-visible');
-                    // Optionally unobserve after revealing
                     observer.unobserve(entry.target);
                 }
             });
@@ -89,19 +172,14 @@
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 const href = this.getAttribute('href');
-
-                // Skip if it's just "#"
                 if (href === '#') return;
 
                 const target = document.querySelector(href);
 
                 if (target) {
                     e.preventDefault();
-
-                    // Close mobile menu if open
                     closeMobileMenu();
 
-                    // Calculate offset for fixed header
                     const navHeight = document.getElementById('nav')?.offsetHeight || 0;
                     const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
 
@@ -110,7 +188,6 @@
                         behavior: 'smooth'
                     });
 
-                    // Update URL without scrolling
                     history.pushState(null, null, href);
                 }
             });
@@ -123,10 +200,8 @@
     function initMobileMenu() {
         const toggle = document.querySelector('.nav__toggle');
         const nav = document.querySelector('.nav');
-
         if (!toggle || !nav) return;
 
-        // Create mobile menu if it doesn't exist
         let mobileMenu = nav.querySelector('.nav__menu--mobile');
 
         if (!mobileMenu) {
@@ -137,11 +212,8 @@
                 mobileMenu = document.createElement('nav');
                 mobileMenu.className = 'nav__menu--mobile';
                 mobileMenu.setAttribute('aria-label', 'Mobile navigation');
-
-                // Clone the menu content
                 mobileMenu.innerHTML = desktopMenu.innerHTML;
 
-                // Add CTA if exists
                 if (cta) {
                     const ctaClone = cta.cloneNode(true);
                     ctaClone.classList.add('nav__cta');
@@ -162,18 +234,15 @@
                 mobileMenu.classList.toggle('is-open');
             }
 
-            // Prevent body scroll when menu is open
             document.body.style.overflow = isExpanded ? '' : 'hidden';
         });
 
-        // Close menu on escape key
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 closeMobileMenu();
             }
         });
 
-        // Close menu when clicking outside
         document.addEventListener('click', function(e) {
             if (!nav.contains(e.target)) {
                 closeMobileMenu();
