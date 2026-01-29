@@ -1,0 +1,8 @@
+.git
+.gitignore
+.playwright-mcp
+CLAUDE.md
+homepage-copy.md
+*.md
+Dockerfile
+.dockerignore

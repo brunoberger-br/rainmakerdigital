@@ -3,283 +3,351 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rainmaker Digital - Digital Marketing Made Simple</title>
-    <meta name="description" content="Digital marketing is complex. We make it simple. Rainmaker Digital marries powerful all-in-one marketing tools with decades of experience to help your business succeed online.">
-    <link rel="stylesheet" href="css/styles.css">
+    <title>Rainmaker Digital Services | Digital Marketing Made Simple</title>
+    <meta name="description" content="Digital marketing is complex. We make it simple. Rainmaker Digital Services combines powerful marketing tools with decades of expertise.">
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <!-- Sticky Header - Dark Theme -->
-    <header class="header" id="header">
-        <div class="container header__container">
-            <a href="/" class="header__logo">
-                <img src="images/rainmakerdigital.png" alt="Rainmaker Digital" class="logo-img">
+    <!-- Navigation -->
+    <header class="nav" id="nav">
+        <div class="nav__container">
+            <a href="/" class="nav__logo" aria-label="Rainmaker Digital Home">
+                <svg class="nav__logo-icon" viewBox="0 0 2048 2048" aria-hidden="true">
+                    <g transform="translate(0,2048) scale(0.1,-0.1)" fill="currentColor">
+                        <path d="M9248 18268 c-730 -733 -2941 -2948 -4913 -4923 -1972 -1974 -3585 -3592 -3585 -3595 0 -7 1218 -1224 1229 -1228 5 -2 1920 1908 4255 4245 2334 2336 4542 4545 4906 4908 364 363 666 668 671 677 8 14 -98 124 -606 630 -339 337 -619 614 -623 616 -4 1 -605 -597 -1334 -1330z"/>
+                        <path d="M13999 12970 c-2632 -2629 -5005 -5001 -6419 -6415 l-345 -345 619 -619 c590 -591 620 -619 640 -605 12 8 2232 2225 4933 4926 l4913 4912 -618 618 c-339 340 -620 618 -623 618 -4 0 -1399 -1391 -3100 -3090z"/>
+                        <path d="M11459 15469 c-331 -326 -9689 -9684 -9689 -9689 0 -14 1240 -1243 1247 -1236 100 102 8188 8174 8881 8863 l987 982 -400 393 c-219 216 -500 493 -624 616 -124 122 -230 222 -237 222 -6 0 -81 -68 -165 -151z"/>
+                        <path d="M13210 7156 c-2703 -2703 -4915 -4919 -4915 -4925 0 -5 277 -287 615 -627 l615 -616 4923 4928 4923 4929 -616 613 c-338 336 -619 612 -623 612 -4 0 -2219 -2212 -4922 -4914z"/>
+                    </g>
+                </svg>
+                <span class="nav__logo-text">Rainmaker Digital</span>
             </a>
 
-            <nav class="header__nav" id="nav">
+            <nav class="nav__menu" aria-label="Main navigation">
                 <ul class="nav__list">
+                    <li><a href="#about" class="nav__link">About</a></li>
                     <li><a href="#services" class="nav__link">Services</a></li>
                     <li><a href="#platform" class="nav__link">Platform</a></li>
-                    <li><a href="#about" class="nav__link">About</a></li>
+                    <li><a href="#contact" class="nav__link">Contact</a></li>
                 </ul>
             </nav>
 
-            <div class="header__actions">
-                <a href="#login" class="btn btn--ghost">Login</a>
-                <a href="#get-started" class="btn btn--primary">Get Started</a>
-            </div>
+            <a href="#contact" class="btn btn--primary nav__cta">Schedule Demo</a>
 
-            <button class="header__hamburger" id="hamburger" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
+            <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false">
+                <span class="nav__toggle-bar"></span>
+                <span class="nav__toggle-bar"></span>
+                <span class="nav__toggle-bar"></span>
             </button>
         </div>
     </header>
 
     <main>
-        <!-- Hero Section - Editorial Luxe -->
-        <section class="hero-v2">
-            <!-- Animated Background Elements -->
-            <div class="hero-v2__bg">
-                <div class="hero-v2__gradient"></div>
-                <div class="hero-v2__orb hero-v2__orb--1"></div>
-                <div class="hero-v2__orb hero-v2__orb--2"></div>
-                <div class="hero-v2__grid"></div>
-            </div>
-
-            <div class="container hero-v2__container hero-v2__container--centered">
-                <div class="hero-v2__content hero-v2__content--centered">
-                    <div class="hero-v2__eyebrow">
-                        <span class="hero-v2__eyebrow-line"></span>
-                        <span class="hero-v2__eyebrow-text">Digital Marketing Agency</span>
-                        <span class="hero-v2__eyebrow-line"></span>
-                    </div>
-
-                    <h1 class="hero-v2__title">
-                        <span class="hero-v2__title-line hero-v2__title-line--1">Digital marketing is <em>complex.</em></span>
-                        <span class="hero-v2__title-line hero-v2__title-line--2">We make it <strong>simple.</strong></span>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero__container">
+                <div class="hero__content">
+                    <h1 class="hero__title">
+                        <span class="hero__title-line">Digital marketing is complex.</span>
+                        <span class="hero__title-line hero__title-line--accent">We make it simple.</span>
                     </h1>
-
-                    <p class="hero-v2__subtitle">You're closer to online success than you think.</p>
-
-                    <div class="hero-v2__ctas">
-                        <a href="#consultation" class="btn btn--primary btn--large hero-v2__btn-primary">
-                            <span>Schedule your demo</span>
-                            <svg class="btn-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M5 12h14M12 5l7 7-7 7"/>
-                            </svg>
-                        </a>
-                    </div>
-
-                    <div class="hero-v2__proof">
-                        <div class="hero-v2__proof-item">
-                            <span class="hero-v2__proof-number">10+</span>
-                            <span class="hero-v2__proof-label">Years Experience</span>
-                        </div>
-                        <div class="hero-v2__proof-divider"></div>
-                        <div class="hero-v2__proof-item">
-                            <span class="hero-v2__proof-number">500+</span>
-                            <span class="hero-v2__proof-label">Clients Served</span>
-                        </div>
-                        <div class="hero-v2__proof-divider"></div>
-                        <div class="hero-v2__proof-item">
-                            <span class="hero-v2__proof-number">All-in-One</span>
-                            <span class="hero-v2__proof-label">Platform</span>
-                        </div>
-                    </div>
+                    <p class="hero__subtitle">You're closer to online success than you think.</p>
+                    <a href="#contact" class="btn btn--primary btn--large hero__cta">
+                        Schedule your demo today
+                        <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
+                <div class="hero__visual">
+                    <svg class="hero__logo-pattern" viewBox="0 0 2048 2048" aria-hidden="true">
+                        <g transform="translate(0,2048) scale(0.1,-0.1)">
+                            <path class="hero__logo-stripe hero__logo-stripe--1" d="M9248 18268 c-730 -733 -2941 -2948 -4913 -4923 -1972 -1974 -3585 -3592 -3585 -3595 0 -7 1218 -1224 1229 -1228 5 -2 1920 1908 4255 4245 2334 2336 4542 4545 4906 4908 364 363 666 668 671 677 8 14 -98 124 -606 630 -339 337 -619 614 -623 616 -4 1 -605 -597 -1334 -1330z"/>
+                            <path class="hero__logo-stripe hero__logo-stripe--2" d="M13999 12970 c-2632 -2629 -5005 -5001 -6419 -6415 l-345 -345 619 -619 c590 -591 620 -619 640 -605 12 8 2232 2225 4933 4926 l4913 4912 -618 618 c-339 340 -620 618 -623 618 -4 0 -1399 -1391 -3100 -3090z"/>
+                            <path class="hero__logo-stripe hero__logo-stripe--3" d="M11459 15469 c-331 -326 -9689 -9684 -9689 -9689 0 -14 1240 -1243 1247 -1236 100 102 8188 8174 8881 8863 l987 982 -400 393 c-219 216 -500 493 -624 616 -124 122 -230 222 -237 222 -6 0 -81 -68 -165 -151z"/>
+                            <path class="hero__logo-stripe hero__logo-stripe--4" d="M13210 7156 c-2703 -2703 -4915 -4919 -4915 -4925 0 -5 277 -287 615 -627 l615 -616 4923 4928 4923 4929 -616 613 c-338 336 -619 612 -623 612 -4 0 -2219 -2212 -4922 -4914z"/>
+                        </g>
+                    </svg>
                 </div>
             </div>
-
-            <!-- Scroll Indicator -->
-            <div class="hero-v2__scroll">
-                <span class="hero-v2__scroll-text">Scroll to explore</span>
-                <div class="hero-v2__scroll-line">
-                    <div class="hero-v2__scroll-dot"></div>
-                </div>
+            <div class="hero__scroll-indicator">
+                <span>Scroll to explore</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 5v14M5 12l7 7 7-7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
             </div>
         </section>
 
-        <!-- Sub-Hero Section - The Clarity Moment -->
-        <section class="sub-hero">
-            <!-- Gradient mesh background with floating orbs -->
-            <div class="sub-hero__mesh">
-                <div class="sub-hero__noise"></div>
-            </div>
-
+        <!-- Sub-Hero / Value Proposition -->
+        <section class="value-prop" id="value">
             <div class="container">
-                <!-- Problem Panel -->
-                <div class="sub-hero__problem reveal-up">
-                    <p class="sub-hero__problem-text">Managing your digital presence is hard work. It takes a full toolbox, broad experience and an ear to the ground for the latest digital marketing changes. You might have one or two of those things ... but you probably don't have all three.</p>
+                <div class="value-prop__intro reveal">
+                    <p class="value-prop__lead">Managing your digital presence is hard work. It takes a full toolbox, broad experience, and an ear to the ground for the latest digital marketing changes.</p>
+                    <p class="value-prop__emphasis">You might have one or two of those things... but you probably don't have all three.</p>
                 </div>
 
-                <!-- Connecting Line -->
-                <div class="sub-hero__connector reveal-up" style="--reveal-delay: 150ms"></div>
+                <div class="value-prop__grid">
+                    <div class="value-card reveal">
+                        <div class="value-card__icon">
+                            <svg viewBox="0 0 48 48" aria-hidden="true">
+                                <rect x="6" y="10" width="36" height="28" rx="2" stroke="currentColor" stroke-width="2" fill="none"/>
+                                <path d="M6 18h36M14 26h8M14 32h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="value-card__title">Full Toolbox</h3>
+                        <p class="value-card__text">Everything you need in one powerful platform, without juggling multiple subscriptions.</p>
+                    </div>
 
-                <!-- The Clarity Statement -->
-                <div class="sub-hero__clarity reveal-up" style="--reveal-delay: 300ms">
-                    <p class="sub-hero__statement">We do.</p>
-                    <div class="sub-hero__statement-line"></div>
+                    <div class="value-card reveal">
+                        <div class="value-card__icon">
+                            <svg viewBox="0 0 48 48" aria-hidden="true">
+                                <circle cx="24" cy="24" r="18" stroke="currentColor" stroke-width="2" fill="none"/>
+                                <path d="M24 14v10l7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="value-card__title">Broad Experience</h3>
+                        <p class="value-card__text">Over a decade of helping businesses succeed online with proven strategies.</p>
+                    </div>
+
+                    <div class="value-card reveal">
+                        <div class="value-card__icon">
+                            <svg viewBox="0 0 48 48" aria-hidden="true">
+                                <path d="M24 8c-8 0-16 8-16 16s8 16 16 16 16-8 16-16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
+                                <circle cx="24" cy="24" r="4" fill="currentColor"/>
+                                <path d="M32 16l8-8M36 8h4v4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="value-card__title">Ear to the Ground</h3>
+                        <p class="value-card__text">Always current with the latest trends and changes in digital marketing.</p>
+                    </div>
                 </div>
 
-                <!-- Supporting Content -->
-                <div class="sub-hero__support">
-                    <p class="sub-hero__text reveal-up" style="--reveal-delay: 450ms">Rainmaker Digital Services marries the powerful all-in-one marketing toolbox of Rainmaker Platform with decades of marketing experience and a commitment to researching current trends. We've been helping businesses find success online for over a decade ... and we want you to be next.</p>
-
-                    <p class="sub-hero__text reveal-up" style="--reveal-delay: 550ms">Lose the headaches of multiple subscriptions to different online marketing services. Get an expert marketing agency in your back pocket. Build your online presence with Rainmaker Digital Services.</p>
+                <div class="value-prop__statement reveal">
+                    <p class="value-prop__we-do">We have all three. <span>You don't need to.</span></p>
                 </div>
             </div>
         </section>
 
         <!-- Section 1: Who We Are -->
-        <section class="content-section" id="about">
+        <section class="section section--about" id="about">
             <div class="container">
-                <div class="content-section__block reveal-up">
-                    <span class="content-section__eyebrow">Who We Are</span>
-                    <h2 class="content-section__title">A new blend of technical resources and digital marketing skill. This is digital marketing that works for you.</h2>
-                    <p class="content-section__body">Rainmaker Digital Services marries the power of an all-in-one marketing solution in Rainmaker Platform with the experience, knowledge and expertise of a top-flight digital marketing agency. We've been building successful online businesses for over a decade. From platform provider to full-scale marketing partner, we can do it all.</p>
-                    <a href="#learn-more" class="btn btn--text">Learn More <span class="arrow">→</span></a>
+                <div class="split split--text-left reveal">
+                    <div class="split__content">
+                        <span class="section__label">Who We Are</span>
+                        <h2 class="section__title">A new blend of technical resources and digital marketing skill.</h2>
+                        <p class="section__lead">This is digital marketing that works for you.</p>
+                        <p class="section__text">Rainmaker Digital Services marries the power of an all-in-one marketing solution in Rainmaker Platform with the experience, knowledge and expertise of a top-flight digital marketing agency. We've been building successful online businesses for over a decade. From platform provider to full-scale marketing partner, we can do it all.</p>
+                        <a href="#services" class="btn btn--secondary">
+                            Learn More
+                            <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="split__visual">
+                        <div class="split__image-wrapper">
+                            <img src="images/rm-home-about2x-transparent.png" alt="Rainmaker Digital team collaboration" class="split__image" loading="lazy">
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Section 2: What We Can Do for You -->
-        <section class="content-section content-section--alt" id="services">
+        <!-- Section 2: What We Can Do -->
+        <section class="section section--services" id="services">
             <div class="container">
-                <div class="content-section__block reveal-up">
-                    <span class="content-section__eyebrow">What We Can Do for You</span>
-                    <h2 class="content-section__title">We're your do-it-all digital marketing partner, from platform to production.</h2>
-                    <p class="content-section__body">Our proprietary marketing solution, Rainmaker Platform, gives you a solution for content, email marketing, podcasting, course creation, eCommerce and more ... without charging you for 20 separate services. But that's not all. Our expert marketing team brings decades of digital experience to the table to help you build an online presence you can be proud of.</p>
-                    <a href="#learn-more" class="btn btn--text">Learn More <span class="arrow">→</span></a>
+                <div class="split split--text-right reveal">
+                    <div class="split__visual">
+                        <div class="split__image-wrapper">
+                            <img src="images/rm-home-services2x-transparent.png" alt="Digital marketing services illustration" class="split__image" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="split__content">
+                        <span class="section__label">What We Can Do</span>
+                        <h2 class="section__title">We're your do-it-all digital marketing partner.</h2>
+                        <p class="section__lead">From platform to production.</p>
+                        <p class="section__text">Our proprietary marketing solution, Rainmaker Platform, gives you a solution for content, email marketing, podcasting, course creation, eCommerce and more... without charging you for 20 separate services. But that's not all. Our expert marketing team brings decades of digital experience to the table to help you build an online presence you can be proud of.</p>
+
+                        <ul class="feature-list">
+                            <li class="feature-list__item">
+                                <svg class="feature-list__icon" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Content Management
+                            </li>
+                            <li class="feature-list__item">
+                                <svg class="feature-list__icon" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Email Marketing
+                            </li>
+                            <li class="feature-list__item">
+                                <svg class="feature-list__icon" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Course Creation
+                            </li>
+                            <li class="feature-list__item">
+                                <svg class="feature-list__icon" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                eCommerce Solutions
+                            </li>
+                        </ul>
+
+                        <a href="#platform" class="btn btn--secondary">
+                            Learn More
+                            <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Section 3: Rainmaker Platform -->
-        <section class="content-section" id="platform">
+        <section class="section section--platform" id="platform">
             <div class="container">
-                <div class="content-section__block reveal-up">
-                    <span class="content-section__eyebrow">Rainmaker Platform</span>
-                    <h2 class="content-section__title">Worry about your business, not your technology.</h2>
-                    <p class="content-section__subtitle">Rainmaker Platform makes marketing simple.</p>
+                <div class="platform__header reveal">
+                    <span class="section__label">Rainmaker Platform</span>
+                    <h2 class="section__title section__title--centered">Worry about your business, not your technology.</h2>
+                    <p class="section__lead section__lead--centered">Rainmaker Platform makes marketing simple.</p>
+                </div>
 
-                    <div class="content-section__prose">
-                        <p>Starting your own site with WordPress or another website builder means paying for multiple plugin subscriptions, managing multiple updates, making sure new plugin versions don't break your site.</p>
+                <div class="platform__showcase reveal">
+                    <div class="platform__mockup-wrapper">
+                        <img src="images/rmds-mock2.jpg" alt="Rainmaker Platform dashboard interface" class="platform__mockup" loading="lazy">
+                        <div class="platform__mockup-shadow"></div>
+                    </div>
+                </div>
 
-                        <p>Using a builder like Wix, Shopify or Squarespace is great for getting off the ground, but rapidly gets expensive as you need more capability. Why not just build your digital home once and get it right the first time?</p>
+                <div class="platform__intro reveal">
+                    <p>Starting your own site with WordPress or another website builder means paying for multiple plugin subscriptions, managing multiple updates, making sure new plugin versions don't break your site. Using a builder like Wix, Shopify or Squarespace is great for getting off the ground, but rapidly gets expensive as you need more capability.</p>
+                    <p class="platform__intro-emphasis">Why not just build your digital home once and get it right the first time?</p>
+                </div>
+
+                <div class="platform__features">
+                    <div class="feature-card reveal">
+                        <div class="feature-card__icon">
+                            <svg viewBox="0 0 48 48" aria-hidden="true">
+                                <rect x="8" y="8" width="32" height="32" rx="4" stroke="currentColor" stroke-width="2" fill="none"/>
+                                <path d="M16 24h16M24 16v16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-card__title">Build with ease</h3>
+                        <p class="feature-card__text">A drag-and-drop page builder and powerful themes make professional-looking pages simple.</p>
                     </div>
 
-                    <p class="content-section__lead">With Rainmaker Platform you can:</p>
+                    <div class="feature-card reveal">
+                        <div class="feature-card__icon">
+                            <svg viewBox="0 0 48 48" aria-hidden="true">
+                                <circle cx="24" cy="16" r="8" stroke="currentColor" stroke-width="2" fill="none"/>
+                                <path d="M8 40c0-8 8-12 16-12s16 4 16 12" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-card__title">Teach your audience</h3>
+                        <p class="feature-card__text">Two built-in learning management systems give you flexible ways to deliver courses and training.</p>
+                    </div>
 
-                    <ul class="content-section__list">
-                        <li><strong>Build with ease</strong> — A drag-and-drop page builder and powerful themes make professional-looking pages simple.</li>
-                        <li><strong>Teach your audience</strong> — Two built-in learning management systems give you flexible ways to deliver courses and training.</li>
-                        <li><strong>Sell anything</strong> — Integrated WooCommerce lets you sell both digital and physical products. We've been helping knowledge professionals sell courses, memberships, and services since the very start.</li>
-                        <li><strong>Keep it simple</strong> — Our modular design lets you turn off features you don't use, keeping your site lean.</li>
-                        <li><strong>Stay focused</strong> — All-in-one setup means no more piecing together plugins or juggling providers.</li>
-                        <li><strong>Stop worrying</strong> — Simple administration, easy navigation and 24/7 support let you stop worrying about your technology and pay more attention to your business.</li>
-                    </ul>
+                    <div class="feature-card reveal">
+                        <div class="feature-card__icon">
+                            <svg viewBox="0 0 48 48" aria-hidden="true">
+                                <path d="M12 40V20l12-12 12 12v20H12z" stroke="currentColor" stroke-width="2" fill="none" stroke-linejoin="round"/>
+                                <rect x="20" y="28" width="8" height="12" stroke="currentColor" stroke-width="2" fill="none"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-card__title">Sell anything</h3>
+                        <p class="feature-card__text">Integrated WooCommerce lets you sell both digital and physical products with ease.</p>
+                    </div>
 
-                    <p class="content-section__closing">This is the solution you've been looking for. Don't miss it. We'd love to show you how it works.</p>
+                    <div class="feature-card reveal">
+                        <div class="feature-card__icon">
+                            <svg viewBox="0 0 48 48" aria-hidden="true">
+                                <circle cx="24" cy="24" r="16" stroke="currentColor" stroke-width="2" fill="none"/>
+                                <path d="M24 16v8l6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-card__title">Keep it simple</h3>
+                        <p class="feature-card__text">Our modular design lets you turn off features you don't use, keeping your site lean.</p>
+                    </div>
 
-                    <a href="#consultation" class="btn btn--primary btn--large">Schedule your demo today</a>
+                    <div class="feature-card reveal">
+                        <div class="feature-card__icon">
+                            <svg viewBox="0 0 48 48" aria-hidden="true">
+                                <circle cx="24" cy="24" r="16" stroke="currentColor" stroke-width="2" fill="none"/>
+                                <path d="M24 16v16M16 24h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-card__title">Stay focused</h3>
+                        <p class="feature-card__text">All-in-one setup means no more piecing together plugins or juggling providers.</p>
+                    </div>
+
+                    <div class="feature-card reveal">
+                        <div class="feature-card__icon">
+                            <svg viewBox="0 0 48 48" aria-hidden="true">
+                                <path d="M24 8l4 8 8 1-6 6 2 8-8-4-8 4 2-8-6-6 8-1z" stroke="currentColor" stroke-width="2" fill="none" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-card__title">Stop worrying</h3>
+                        <p class="feature-card__text">Simple administration, easy navigation and 24/7 support let you focus on your business.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Section 4: Final CTA -->
-        <section class="final-cta">
-            <!-- Decorative blobs -->
-            <div class="final-cta__decoration final-cta__decoration--1"></div>
-            <div class="final-cta__decoration final-cta__decoration--2"></div>
-
+        <!-- Final CTA Section -->
+        <section class="cta-section" id="contact">
+            <div class="cta-section__bg"></div>
             <div class="container">
-                <h2 class="final-cta__title">You don't need to be a marketing expert. You just need a partner who is.</h2>
-                <p class="final-cta__subtitle">Learn how we can take your business to the next level.</p>
-                <div class="final-cta__actions">
-                    <a href="#schedule" class="btn btn--white btn--large">Tell us how we can help</a>
+                <div class="cta-section__content reveal">
+                    <h2 class="cta-section__title">You don't need to be a marketing expert.</h2>
+                    <p class="cta-section__subtitle">You just need a partner who is.</p>
+                    <p class="cta-section__text">Learn how we can take your business to the next level.</p>
+                    <a href="mailto:hello@rainmakerdigital.com" class="btn btn--white btn--large">
+                        Tell us how we can help
+                        <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer - Dark, Sophisticated -->
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer__top">
+            <div class="footer__content">
                 <div class="footer__brand">
-                    <a href="/" class="footer__logo">
-                        <img src="images/rainmakerdigital.png" alt="Rainmaker Digital" class="logo-img">
+                    <a href="/" class="footer__logo" aria-label="Rainmaker Digital Home">
+                        <svg class="footer__logo-icon" viewBox="0 0 2048 2048" aria-hidden="true">
+                            <g transform="translate(0,2048) scale(0.1,-0.1)" fill="currentColor">
+                                <path d="M9248 18268 c-730 -733 -2941 -2948 -4913 -4923 -1972 -1974 -3585 -3592 -3585 -3595 0 -7 1218 -1224 1229 -1228 5 -2 1920 1908 4255 4245 2334 2336 4542 4545 4906 4908 364 363 666 668 671 677 8 14 -98 124 -606 630 -339 337 -619 614 -623 616 -4 1 -605 -597 -1334 -1330z"/>
+                                <path d="M13999 12970 c-2632 -2629 -5005 -5001 -6419 -6415 l-345 -345 619 -619 c590 -591 620 -619 640 -605 12 8 2232 2225 4933 4926 l4913 4912 -618 618 c-339 340 -620 618 -623 618 -4 0 -1399 -1391 -3100 -3090z"/>
+                                <path d="M11459 15469 c-331 -326 -9689 -9684 -9689 -9689 0 -14 1240 -1243 1247 -1236 100 102 8188 8174 8881 8863 l987 982 -400 393 c-219 216 -500 493 -624 616 -124 122 -230 222 -237 222 -6 0 -81 -68 -165 -151z"/>
+                                <path d="M13210 7156 c-2703 -2703 -4915 -4919 -4915 -4925 0 -5 277 -287 615 -627 l615 -616 4923 4928 4923 4929 -616 613 c-338 336 -619 612 -623 612 -4 0 -2219 -2212 -4922 -4914z"/>
+                            </g>
+                        </svg>
                     </a>
-                    <p class="footer__tagline">Empowering businesses with proven digital marketing strategies and cutting-edge technology since 2009.</p>
-                    <div class="footer__social">
-                        <a href="#facebook" aria-label="Facebook">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-                        </a>
-                        <a href="#linkedin" aria-label="LinkedIn">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-                        </a>
-                        <a href="#twitter" aria-label="Twitter">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
-                        </a>
-                        <a href="#youtube" aria-label="YouTube">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="#0a0f1a"/></svg>
-                        </a>
-                    </div>
+                    <p class="footer__tagline">Digital marketing made simple.</p>
                 </div>
-
                 <div class="footer__links">
-                    <div class="footer__column">
-                        <h4>Services</h4>
-                        <ul>
-                            <li><a href="#content">Content Marketing</a></li>
-                            <li><a href="#strategy">Strategy</a></li>
-                            <li><a href="#development">Development</a></li>
-                            <li><a href="#marketing">Digital Marketing</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer__column">
-                        <h4>Platform</h4>
-                        <ul>
-                            <li><a href="#features">Features</a></li>
-                            <li><a href="#pricing">Pricing</a></li>
-                            <li><a href="#demo">Demo</a></li>
-                            <li><a href="#support">Support</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer__column">
-                        <h4>Resources</h4>
-                        <ul>
-                            <li><a href="#blog">Blog</a></li>
-                            <li><a href="#guides">Guides</a></li>
-                            <li><a href="#dispatch">Dispatch</a></li>
-                            <li><a href="#webinars">Webinars</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer__column">
-                        <h4>Company</h4>
-                        <ul>
-                            <li><a href="#about">About</a></li>
-                            <li><a href="#team">Team</a></li>
-                            <li><a href="#careers">Careers</a></li>
-                            <li><a href="#contact">Contact</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer__column">
-                        <h4>Legal</h4>
-                        <ul>
-                            <li><a href="#terms">Terms</a></li>
-                            <li><a href="#privacy">Privacy</a></li>
-                            <li><a href="#refunds">Refunds</a></li>
-                        </ul>
-                    </div>
+                    <a href="#about">About</a>
+                    <a href="#services">Services</a>
+                    <a href="#platform">Platform</a>
+                    <a href="#contact">Contact</a>
                 </div>
             </div>
-
             <div class="footer__bottom">
-                <p>&copy; 2026 Rainmaker Digital. All rights reserved.</p>
+                <p class="footer__copyright">&copy; 2025 Rainmaker Digital Services. All rights reserved.</p>
             </div>
         </div>
     </footer>
