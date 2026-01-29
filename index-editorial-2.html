@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rainmaker Digital Services | Strategy + Platform</title>
+    <meta name="description" content="Rainmaker Digital Services marries the powerful all-in-one marketing toolbox of Rainmaker Platform with decades of marketing experience.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Manrope', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        rainmaker: {
+                            blue: '#2563EB',
+                            dark: '#0F172A',
+                            light: '#F8FAFC',
+                            accent: '#F59E0B' // Amber for contrast
+                        }
+                    },
+                    backgroundImage: {
+                        'grid-pattern': "linear-gradient(to right, #e2e8f0 1px, transparent 1px), linear-gradient(to bottom, #e2e8f0 1px, transparent 1px)",
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        .text-outline {
+            -webkit-text-stroke: 1px #cbd5e1;
+            color: transparent;
+        }
+        
+        .grid-bg {
+            background-size: 40px 40px;
+        }
+        
+        /* Sticky Section Utilities */
+        .sticky-wrapper {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        /* Smooth reveal animation */
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-up.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hover card lift without shadow */
+        .border-card {
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        .border-card:hover {
+            transform: translate(-4px, -4px);
+            background-color: #f8fafc;
+            box-shadow: 4px 4px 0px 0px #0F172A;
+        }
+    </style>
+</head>
+<body class="bg-white text-slate-900 antialiased selection:bg-blue-100 selection:text-blue-900">
+
+    <!-- Navigation (Minimalist Bordered) -->
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-sm border-b border-slate-200">
+        <div class="max-w-[1920px] mx-auto">
+            <div class="flex justify-between h-20">
+                <!-- Logo Area -->
+                <div class="flex items-center px-6 lg:px-12 border-r border-slate-200">
+                    <a href="#" class="flex items-center gap-2 group">
+                        <div class="w-8 h-8 bg-slate-900 text-white flex items-center justify-center font-display font-bold text-lg rounded-sm group-hover:bg-blue-600 transition-colors">R</div>
+                        <span class="font-display font-bold text-xl tracking-tight">Rainmaker<span class="text-blue-600">.</span></span>
+                    </a>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex flex-1 justify-end items-stretch">
+                    <a href="#who-we-are" class="flex items-center px-8 text-sm font-semibold hover:bg-slate-50 border-l border-slate-200 transition-colors">Who We Are</a>
+                    <a href="#capabilities" class="flex items-center px-8 text-sm font-semibold hover:bg-slate-50 border-l border-slate-200 transition-colors">Capabilities</a>
+                    <a href="#platform" class="flex items-center px-8 text-sm font-semibold hover:bg-slate-50 border-l border-slate-200 transition-colors">Platform</a>
+                    <a href="#contact" class="flex items-center px-10 bg-slate-900 text-white text-sm font-bold hover:bg-blue-600 transition-colors">
+                        Start Now
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center px-6 border-l border-slate-200">
+                    <button id="mobile-toggle" class="p-2">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white border-b border-slate-200">
+            <div class="flex flex-col">
+                <a href="#who-we-are" class="p-4 border-b border-slate-100 hover:bg-slate-50 font-medium">Who We Are</a>
+                <a href="#capabilities" class="p-4 border-b border-slate-100 hover:bg-slate-50 font-medium">Capabilities</a>
+                <a href="#platform" class="p-4 border-b border-slate-100 hover:bg-slate-50 font-medium">Platform</a>
+                <a href="#contact" class="p-4 bg-slate-50 font-bold text-blue-600">Start Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section (Asymmetric Grid) -->
+    <header class="relative pt-20 min-h-screen flex flex-col">
+        <div class="flex-1 grid lg:grid-cols-12 border-b border-slate-200">
+            
+            <!-- Left Content (Main Headline) -->
+            <div class="lg:col-span-7 p-6 lg:p-16 flex flex-col justify-center border-r border-slate-200 bg-grid-pattern grid-bg relative">
+                <!-- Fade overlay for readability -->
+                <div class="absolute inset-0 bg-white/60 pointer-events-none"></div>
+                
+                <div class="relative z-10 reveal-up">
+                    <div class="inline-block px-3 py-1 mb-8 border border-slate-900 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-slate-900 hover:text-white transition-colors cursor-default">
+                        Simplicity Engineered
+                    </div>
+                    <h1 class="font-display text-6xl lg:text-8xl font-bold tracking-tighter leading-[0.95] mb-8 text-slate-900">
+                        Digital <br>
+                        marketing <br>
+                        is <span class="text-blue-600">complex.</span>
+                    </h1>
+                    <p class="font-display text-4xl lg:text-6xl font-light tracking-tight text-slate-400 leading-[1] mb-12">
+                        We make it <span class="text-slate-900 font-medium border-b-4 border-blue-600">simple.</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Right Content (Subcopy & Action) -->
+            <div class="lg:col-span-5 flex flex-col">
+                <div class="flex-1 p-8 lg:p-12 flex flex-col justify-center bg-white border-b border-slate-200">
+                    <h2 class="font-sans text-2xl font-bold mb-6">You’re closer to online success than you think.</h2>
+                    <p class="text-lg text-slate-600 leading-relaxed mb-8">
+                        Managing your digital presence takes a full toolbox, broad experience, and an ear to the ground. You might have one. You probably don't have all three. <span class="font-bold text-slate-900">We do.</span>
+                    </p>
+                    <a href="#contact" class="inline-flex items-center gap-3 text-lg font-bold hover:gap-5 transition-all text-blue-600">
+                        Build your presence <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </a>
+                </div>
+                
+                <!-- Stats / Trust Indicators -->
+                <div class="h-auto lg:h-48 grid grid-cols-2">
+                    <div class="p-8 border-r border-slate-200 flex flex-col justify-center hover:bg-slate-50 transition-colors">
+                        <span class="block text-4xl font-display font-bold text-slate-900 mb-1">10+</span>
+                        <span class="text-sm font-medium text-slate-500 uppercase tracking-wide">Years of<br>Experience</span>
+                    </div>
+                    <div class="p-8 flex flex-col justify-center hover:bg-slate-50 transition-colors">
+                        <span class="block text-4xl font-display font-bold text-slate-900 mb-1">24/7</span>
+                        <span class="text-sm font-medium text-slate-500 uppercase tracking-wide">Platform<br>Support</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Who We Are (Split Layout) -->
+    <section id="who-we-are" class="border-b border-slate-200 bg-slate-50">
+        <div class="max-w-[1920px] mx-auto grid lg:grid-cols-2">
+            
+            <!-- Sticky Narrative Side -->
+            <div class="p-8 lg:p-20 lg:sticky lg:top-20 lg:h-[calc(100vh-80px)] flex flex-col justify-center border-r border-slate-200 bg-white">
+                <span class="text-blue-600 font-bold tracking-widest text-xs uppercase mb-6">Who We Are</span>
+                <h2 class="font-display text-4xl lg:text-5xl font-bold mb-8 leading-tight">
+                    A new blend of technical resources and digital marketing skill.
+                </h2>
+                <div class="space-y-6 text-lg text-slate-600 leading-relaxed">
+                    <p>
+                        Rainmaker Digital Services marries the power of an all-in-one marketing solution in Rainmaker Platform with the experience, knowledge and expertise of a top-flight digital marketing agency.
+                    </p>
+                    <p>
+                        From platform provider to full-scale marketing partner, we can do it all.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Scrollable Features Side -->
+            <div class="bg-slate-50">
+                <!-- Block 1 -->
+                <div class="min-h-[50vh] p-12 lg:p-20 flex flex-col justify-center border-b border-slate-200">
+                    <div class="w-16 h-16 bg-blue-600 text-white flex items-center justify-center rounded-sm mb-6">
+                        <i data-lucide="cpu" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="font-display text-3xl font-bold mb-4">Technical Resources</h3>
+                    <p class="text-slate-600 text-lg">
+                        We aren't just strategists; we are builders. We own the code, the servers, and the infrastructure that powers your business.
+                    </p>
+                </div>
+
+                <!-- Block 2 -->
+                <div class="min-h-[50vh] p-12 lg:p-20 flex flex-col justify-center border-b border-slate-200">
+                    <div class="w-16 h-16 bg-slate-900 text-white flex items-center justify-center rounded-sm mb-6">
+                        <i data-lucide="pen-tool" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="font-display text-3xl font-bold mb-4">Marketing Skill</h3>
+                    <p class="text-slate-600 text-lg">
+                        We've been building successful online businesses for over a decade. We know what content converts and what strategies scale.
+                    </p>
+                </div>
+
+                <!-- Block 3 -->
+                <div class="min-h-[50vh] p-12 lg:p-20 flex flex-col justify-center bg-blue-50">
+                    <div class="w-16 h-16 bg-blue-100 text-blue-600 flex items-center justify-center rounded-sm mb-6">
+                        <i data-lucide="check-circle" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="font-display text-3xl font-bold mb-4">The Complete Package</h3>
+                    <p class="text-slate-600 text-lg">
+                        This is digital marketing that works for you. Lose the headaches of multiple subscriptions and get an expert agency in your back pocket.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Capabilities (Masonry/Grid) -->
+    <section id="capabilities" class="py-24 bg-white border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 mb-16">
+            <h2 class="font-display text-5xl lg:text-7xl font-bold text-slate-900 mb-6">What We Can Do<br> <span class="text-slate-300">for You.</span></h2>
+            <p class="text-xl text-slate-600 max-w-2xl">We're your do-it-all digital marketing partner, from platform to production.</p>
+        </div>
+
+        <div class="max-w-[1920px] mx-auto border-t border-slate-200">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3">
+                <!-- Grid Item 1 -->
+                <div class="group border-r border-b border-slate-200 p-10 hover:bg-slate-50 transition-colors">
+                    <span class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4 block">01 — The Tech</span>
+                    <h3 class="text-2xl font-bold mb-4 font-display">Proprietary Platform</h3>
+                    <p class="text-slate-600 leading-relaxed mb-6">
+                        Rainmaker Platform gives you a solution for content, email marketing, podcasting, course creation, eCommerce and more without charging you for 20 separate services.
+                    </p>
+                    <ul class="space-y-2 text-sm font-medium text-slate-800">
+                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-blue-600 rounded-full"></div> Content Management</li>
+                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-blue-600 rounded-full"></div> Course Creation</li>
+                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-blue-600 rounded-full"></div> Email Marketing</li>
+                    </ul>
+                </div>
+
+                <!-- Grid Item 2 -->
+                <div class="group border-r border-b border-slate-200 p-10 hover:bg-slate-50 transition-colors">
+                    <span class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4 block">02 — The Strategy</span>
+                    <h3 class="text-2xl font-bold mb-4 font-display">Expert Marketing</h3>
+                    <p class="text-slate-600 leading-relaxed mb-6">
+                        Our expert marketing team brings decades of digital experience to the table to help you build an online presence you can be proud of.
+                    </p>
+                    <ul class="space-y-2 text-sm font-medium text-slate-800">
+                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-blue-600 rounded-full"></div> Strategic Consulting</li>
+                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-blue-600 rounded-full"></div> Content Production</li>
+                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-blue-600 rounded-full"></div> Audience Building</li>
+                    </ul>
+                </div>
+
+                <!-- Grid Item 3 (Visual/CTA) -->
+                <div class="group border-b border-slate-200 p-10 bg-slate-900 text-white flex flex-col justify-between">
+                    <div>
+                        <span class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4 block">03 — The Result</span>
+                        <h3 class="text-3xl font-bold mb-4 font-display">A Unified Presence</h3>
+                        <p class="text-slate-400 leading-relaxed">
+                            Stop juggling plugins and freelancers. Get everything under one roof.
+                        </p>
+                    </div>
+                    <div class="mt-8">
+                        <a href="#contact" class="inline-flex items-center justify-center w-full py-4 bg-white text-slate-900 font-bold hover:bg-blue-50 transition-colors">
+                            Start Building
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Platform Features (Technical Grid) -->
+    <section id="platform" class="py-24 bg-slate-50 border-b border-slate-200 relative overflow-hidden">
+        <!-- Technical Background Grid -->
+        <div class="absolute inset-0 bg-grid-pattern opacity-50 pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+            <div class="max-w-3xl mb-16">
+                <h2 class="font-display text-4xl lg:text-6xl font-bold mb-6">Worry about your business, <span class="text-blue-600">not your technology.</span></h2>
+                <p class="text-lg text-slate-600 leading-relaxed">
+                    Starting your own site with WordPress means managing multiple updates and plugin conflicts. Using Wix or Squarespace gets expensive as you scale. Why not just build your digital home once and get it right the first time?
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Feature Card 1 -->
+                <div class="bg-white border border-slate-200 p-8 border-card">
+                    <i data-lucide="layout-template" class="w-8 h-8 text-blue-600 mb-6"></i>
+                    <h4 class="text-xl font-bold mb-3 font-display">Build with ease</h4>
+                    <p class="text-slate-500 text-sm leading-relaxed">A drag-and-drop page builder and powerful themes make professional-looking pages simple.</p>
+                </div>
+
+                <!-- Feature Card 2 -->
+                <div class="bg-white border border-slate-200 p-8 border-card">
+                    <i data-lucide="graduation-cap" class="w-8 h-8 text-blue-600 mb-6"></i>
+                    <h4 class="text-xl font-bold mb-3 font-display">Teach your audience</h4>
+                    <p class="text-slate-500 text-sm leading-relaxed">Two built-in learning management systems give you flexible ways to deliver courses and training.</p>
+                </div>
+
+                <!-- Feature Card 3 -->
+                <div class="bg-white border border-slate-200 p-8 border-card">
+                    <i data-lucide="shopping-cart" class="w-8 h-8 text-blue-600 mb-6"></i>
+                    <h4 class="text-xl font-bold mb-3 font-display">Sell anything</h4>
+                    <p class="text-slate-500 text-sm leading-relaxed">Integrated WooCommerce lets you sell both digital and physical products. Memberships, courses, services.</p>
+                </div>
+
+                <!-- Feature Card 4 -->
+                <div class="bg-white border border-slate-200 p-8 border-card">
+                    <i data-lucide="minimize-2" class="w-8 h-8 text-slate-900 mb-6"></i>
+                    <h4 class="text-xl font-bold mb-3 font-display">Keep it simple</h4>
+                    <p class="text-slate-500 text-sm leading-relaxed">Our modular design lets you turn off features you don’t use, keeping your site lean.</p>
+                </div>
+
+                <!-- Feature Card 5 -->
+                <div class="bg-white border border-slate-200 p-8 border-card">
+                    <i data-lucide="focus" class="w-8 h-8 text-slate-900 mb-6"></i>
+                    <h4 class="text-xl font-bold mb-3 font-display">Stay focused</h4>
+                    <p class="text-slate-500 text-sm leading-relaxed">All-in-one setup means no more piecing together plugins or juggling providers.</p>
+                </div>
+
+                <!-- Feature Card 6 -->
+                <div class="bg-white border border-slate-200 p-8 border-card">
+                    <i data-lucide="smile" class="w-8 h-8 text-slate-900 mb-6"></i>
+                    <h4 class="text-xl font-bold mb-3 font-display">Stop worrying</h4>
+                    <p class="text-slate-500 text-sm leading-relaxed">Simple administration and 24/7 support let you pay more attention to your business.</p>
+                </div>
+            </div>
+
+            <div class="mt-16 pt-16 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-8">
+                <p class="text-xl font-medium text-slate-900 max-w-xl">
+                    This is the solution you’ve been looking for. Don’t miss it. We'd love to show you how it works.
+                </p>
+                <a href="#contact" class="px-8 py-4 bg-slate-900 text-white font-bold hover:bg-blue-600 transition-colors whitespace-nowrap">
+                    Show Me How It Works
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer CTA -->
+    <section id="contact" class="py-32 bg-slate-900 text-white relative">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 text-center">
+            <h2 class="font-display text-4xl lg:text-7xl font-bold mb-8 leading-tight">
+                You don't need to be a <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">marketing expert.</span>
+            </h2>
+            <p class="text-2xl text-slate-400 mb-12 font-light">
+                You just need a partner who is.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-6">
+                <button class="px-10 py-5 bg-blue-600 text-white text-lg font-bold hover:bg-blue-500 transition-colors">
+                    Contact Us Today
+                </button>
+                <button class="px-10 py-5 bg-transparent border border-slate-600 text-white text-lg font-bold hover:bg-white/10 transition-colors">
+                    Learn More
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Info -->
+    <footer class="bg-slate-950 text-slate-500 py-16 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="grid md:grid-cols-4 gap-12 mb-16">
+                <div class="col-span-1">
+                    <a href="#" class="flex items-center gap-2 mb-6">
+                        <div class="w-6 h-6 bg-white text-slate-900 flex items-center justify-center font-bold text-xs rounded-sm">R</div>
+                        <span class="font-display font-bold text-white text-lg">Rainmaker.</span>
+                    </a>
+                    <p class="text-sm">Digital marketing made simple.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-bold mb-4 uppercase text-xs tracking-widest">Company</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-blue-400">Who We Are</a></li>
+                        <li><a href="#" class="hover:text-blue-400">Contact</a></li>
+                        <li><a href="#" class="hover:text-blue-400">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-bold mb-4 uppercase text-xs tracking-widest">Platform</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-blue-400">Features</a></li>
+                        <li><a href="#" class="hover:text-blue-400">LMS & Courses</a></li>
+                        <li><a href="#" class="hover:text-blue-400">Security</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold mb-4 uppercase text-xs tracking-widest">Connect</h4>
+                    <div class="flex gap-4">
+                        <a href="#" class="hover:text-white"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                        <a href="#" class="hover:text-white"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-slate-800 flex justify-between items-center text-xs uppercase tracking-wide">
+                <p>&copy; 2025 Rainmaker Digital Services, LLC.</p>
+                <p>Powered by Rainmaker Platform</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // Reveal Animation Observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal-up').forEach(el => observer.observe(el));
+
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-toggle');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

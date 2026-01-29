@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rainmaker Digital Services | The Authority</title>
+    
+    <!-- React & ReactDOM -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    
+    <!-- Babel for JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Montserrat (Full Range) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            blue: '#0F52BA', /* Adjusted to match reference blue (Sapphire/Royal) */
+                            darkBlue: '#0a3d8f',
+                            bg: '#f5f5f5',
+                            text: '#111111',
+                            muted: '#666666',
+                            border: '#e5e5e5', 
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                    },
+                    letterSpacing: {
+                        tightest: '-0.05em',
+                        widest: '0.2em',
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 1s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #ffffff;
+            color: #333333;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Architectural Grid Pattern for Hero Left */
+        .bg-grid-pattern {
+            background-size: 60px 60px;
+            background-image: 
+                linear-gradient(to right, #f3f3f3 1px, transparent 1px),
+                linear-gradient(to bottom, #f3f3f3 1px, transparent 1px);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f5f5f5; }
+        ::-webkit-scrollbar-thumb { background: #0F52BA; border-radius: 0; }
+        
+        .underline-thick {
+            box-shadow: inset 0 -4px 0 0 #0F52BA;
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect, useRef } = React;
+
+        // --- Layout Shell ---
+        const GridShell = ({ children }) => (
+            <div className="relative w-full max-w-[1600px] mx-auto border-x border-brand-border bg-white min-h-screen">
+                {children}
+            </div>
+        );
+
+        // --- Atoms ---
+        const SectionLabel = ({ text }) => (
+            <div className="flex items-center gap-3 mb-6 text-brand-muted">
+                <div className="w-2 h-2 rounded-full bg-brand-blue"></div>
+                <span className="text-[10px] font-bold uppercase tracking-widest">{text}</span>
+            </div>
+        );
+
+        const Nav = () => {
+            const [scrolled, setScrolled] = useState(false);
+            useEffect(() => {
+                const handler = () => setScrolled(window.scrollY > 50);
+                window.addEventListener('scroll', handler);
+                return () => window.removeEventListener('scroll', handler);
+            }, []);
+
+            return (
+                <nav className="fixed top-0 w-full z-50 bg-white border-b border-brand-border">
+                    <div className="max-w-[1600px] mx-auto flex h-20 border-x border-brand-border">
+                        
+                        {/* Logo Section */}
+                        <div className="flex items-center pl-8 pr-12 border-r border-brand-border min-w-[240px] bg-white">
+                            <div className="flex items-center gap-3">
+                                <div className="w-9 h-9 bg-brand-text flex items-center justify-center text-white font-bold rounded-sm text-lg">R</div>
+                                <div className="font-bold text-xl tracking-tight text-brand-text">Rainmaker.</div>
+                            </div>
+                        </div>
+
+                        {/* Spacer */}
+                        <div className="flex-grow bg-white hidden md:block"></div>
+
+                        {/* Navigation Items */}
+                        <div className="hidden md:flex h-full">
+                            <a href="#" className="flex items-center justify-center px-10 border-l border-brand-border hover:bg-gray-50 text-xs font-bold text-brand-text transition-colors whitespace-nowrap">
+                                Who We Are
+                            </a>
+                            <a href="#" className="flex items-center justify-center px-10 border-l border-brand-border hover:bg-gray-50 text-xs font-bold text-brand-text transition-colors whitespace-nowrap">
+                                Capabilities
+                            </a>
+                            <a href="#" className="flex items-center justify-center px-10 border-l border-brand-border hover:bg-gray-50 text-xs font-bold text-brand-text transition-colors whitespace-nowrap">
+                                Platform
+                            </a>
+                            <a href="#" className="flex items-center justify-center px-12 border-l border-brand-border bg-brand-text text-white hover:bg-brand-blue transition-colors text-xs font-bold whitespace-nowrap">
+                                Start Now
+                            </a>
+                        </div>
+                    </div>
+                </nav>
+            );
+        };
+
+        const Hero = () => {
+            return (
+                <section className="relative pt-20 border-b border-brand-border bg-white min-h-[90vh] flex flex-col">
+                    <div className="grid lg:grid-cols-12 h-full flex-grow">
+                        
+                        {/* Left Column: Visual Typography (60%) */}
+                        <div className="lg:col-span-7 relative bg-white bg-grid-pattern border-r border-brand-border flex flex-col justify-center px-12 lg:px-24 py-20">
+                            
+                            <div className="animate-fade-in">
+                                {/* Badge */}
+                                <div className="inline-block px-5 py-2 border border-brand-text rounded-full mb-12">
+                                    <span className="text-[10px] font-bold uppercase tracking-[0.1em] text-brand-text">SIMPLICITY ENGINEERED</span>
+                                </div>
+
+                                {/* Headline */}
+                                <h1 className="font-bold text-6xl md:text-7xl lg:text-[7rem] leading-[0.9] tracking-tight text-brand-text mb-12">
+                                    Digital <br/>
+                                    marketing <br/>
+                                    is <span className="text-brand-blue">complex.</span>
+                                </h1>
+                                
+                                {/* Subheadline */}
+                                <h2 className="text-4xl md:text-5xl lg:text-6xl tracking-tight">
+                                    <span className="font-light text-gray-400">We make it</span> <span className="font-bold text-brand-text border-b-4 border-brand-blue">simple.</span>
+                                </h2>
+                            </div>
+                        </div>
+
+                        {/* Right Column: Narrative & Stats (40%) */}
+                        <div className="lg:col-span-5 flex flex-col justify-between bg-white h-full">
+                            
+                            {/* Top Content */}
+                            <div className="p-12 lg:p-16 flex flex-col justify-center flex-grow">
+                                <h3 className="text-2xl font-bold text-brand-text mb-6">
+                                    You’re closer to online success than you think.
+                                </h3>
+                                <p className="text-lg text-brand-muted leading-relaxed mb-8">
+                                    Managing your digital presence takes a full toolbox, broad experience, and an ear to the ground. You might have one. You probably don't have all three. <span className="font-bold text-brand-text">We do.</span>
+                                </p>
+                                <a href="#" className="inline-flex items-center gap-2 text-brand-blue font-bold text-lg hover:gap-4 transition-all">
+                                    Build your presence 
+                                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                                </a>
+                            </div>
+
+                            {/* Bottom Stats Grid */}
+                            <div className="grid grid-cols-2 border-t border-brand-border">
+                                <div className="p-12 lg:p-16 border-r border-brand-border">
+                                    <div className="text-4xl font-bold text-brand-text mb-2">10+</div>
+                                    <div className="text-[10px] font-bold text-brand-muted uppercase tracking-wider leading-tight">
+                                        Years of <br/> Experience
+                                    </div>
+                                </div>
+                                <div className="p-12 lg:p-16">
+                                    <div className="text-4xl font-bold text-brand-text mb-2">24/7</div>
+                                    <div className="text-[10px] font-bold text-brand-muted uppercase tracking-wider leading-tight">
+                                        Platform <br/> Support
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+            );
+        };
+
+        const StickyScrollNarrative = () => {
+            return (
+                <section className="relative border-b border-brand-border bg-white">
+                    <div className="grid lg:grid-cols-2">
+                        {/* Sticky Left: The Problem */}
+                        <div className="lg:sticky lg:top-20 lg:h-[calc(100vh-80px)] flex flex-col justify-center p-12 lg:pl-[10%] lg:pr-12 bg-gray-50 border-r border-brand-border">
+                            <SectionLabel text="The Challenge" />
+                            <h2 className="text-4xl md:text-5xl font-extrabold text-brand-text leading-tight mb-8">
+                                Managing your digital presence is <span className="text-brand-blue">hard work.</span>
+                            </h2>
+                            <p className="text-brand-muted text-lg leading-relaxed max-w-md">
+                                It takes a full toolbox, broad experience, and an ear to the ground for the latest changes. You might have one... but probably not all three.
+                            </p>
+                        </div>
+
+                        {/* Scrolling Right: The Solution */}
+                        <div className="bg-white">
+                            <div className="min-h-[50vh] flex flex-col justify-center p-12 lg:p-20 border-b border-brand-border hover:bg-gray-50 transition-colors">
+                                <div className="text-6xl text-brand-blue mb-6 font-black opacity-20">01</div>
+                                <h3 className="text-2xl font-bold mb-4 text-brand-text">We Do.</h3>
+                                <p className="text-brand-muted leading-relaxed text-lg">
+                                    Rainmaker Digital Services marries the powerful all-in-one marketing toolbox of Rainmaker Platform with decades of marketing experience.
+                                </p>
+                            </div>
+                            <div className="min-h-[50vh] flex flex-col justify-center p-12 lg:p-20 border-b border-brand-border hover:bg-gray-50 transition-colors">
+                                <div className="text-6xl text-brand-blue mb-6 font-black opacity-20">02</div>
+                                <h3 className="text-2xl font-bold mb-4 text-brand-text">No More Headaches.</h3>
+                                <p className="text-brand-muted leading-relaxed text-lg">
+                                    Lose the headaches of multiple subscriptions to different online marketing services. Get an expert marketing agency in your back pocket.
+                                </p>
+                            </div>
+                            <div className="min-h-[50vh] flex flex-col justify-center p-12 lg:p-20 hover:bg-gray-50 transition-colors">
+                                <div className="text-6xl text-brand-blue mb-6 font-black opacity-20">03</div>
+                                <h3 className="text-2xl font-bold mb-4 text-brand-text">Build Authority.</h3>
+                                <p className="text-brand-muted leading-relaxed text-lg">
+                                    We've been helping businesses find success online for over a decade. From platform provider to full-scale partner, we can do it all.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
+        const InteractiveSplit = () => {
+            const [hovered, setHovered] = useState(null); // 'platform' or 'agency'
+
+            return (
+                <section className="relative h-[80vh] border-b border-brand-border bg-brand-text overflow-hidden">
+                    <div className="absolute inset-0 flex flex-col md:flex-row">
+                        
+                        {/* Option 1: Platform */}
+                        <div 
+                            onMouseEnter={() => setHovered('platform')}
+                            onMouseLeave={() => setHovered(null)}
+                            className={`relative flex-1 border-r border-white/10 transition-all duration-700 ease-expo cursor-pointer group
+                                ${hovered === 'platform' ? 'flex-[2] bg-brand-blue' : 'bg-brand-text hover:bg-gray-900'}
+                            `}
+                        >
+                            <div className="absolute inset-0 p-12 lg:p-20 flex flex-col justify-between z-10">
+                                <div className="border-t border-white/20 pt-6">
+                                    <span className="text-xs font-bold uppercase tracking-widest text-white/60 mb-2 block">The Tool</span>
+                                    <h3 className="text-4xl md:text-5xl font-black text-white">PLATFORM</h3>
+                                </div>
+                                <div className={`transition-all duration-500 transform ${hovered === 'platform' ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+                                    <p className="text-white/90 text-lg mb-8 max-w-md leading-relaxed">
+                                        Content, email, podcasting, courses, and eCommerce. One login. One price. No plugin chaos.
+                                    </p>
+                                    <span className="inline-block border-b border-white pb-1 text-sm font-bold uppercase tracking-widest text-white">Explore Platform</span>
+                                </div>
+                            </div>
+                            {/* Background Number */}
+                            <div className="absolute bottom-0 right-0 text-[15rem] font-black leading-none text-white/5 pointer-events-none -mb-10 -mr-10">01</div>
+                        </div>
+
+                        {/* Option 2: Agency */}
+                        <div 
+                            onMouseEnter={() => setHovered('agency')}
+                            onMouseLeave={() => setHovered(null)}
+                            className={`relative flex-1 transition-all duration-700 ease-expo cursor-pointer group
+                                ${hovered === 'agency' ? 'flex-[2] bg-white' : 'bg-brand-text hover:bg-gray-900'}
+                            `}
+                        >
+                            <div className="absolute inset-0 p-12 lg:p-20 flex flex-col justify-between z-10">
+                                <div className={`border-t pt-6 ${hovered === 'agency' ? 'border-brand-text/20' : 'border-white/20'}`}>
+                                    <span className={`text-xs font-bold uppercase tracking-widest mb-2 block ${hovered === 'agency' ? 'text-brand-muted' : 'text-white/60'}`}>The Team</span>
+                                    <h3 className={`text-4xl md:text-5xl font-black ${hovered === 'agency' ? 'text-brand-text' : 'text-white'}`}>AGENCY</h3>
+                                </div>
+                                <div className={`transition-all duration-500 transform ${hovered === 'agency' ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+                                    <p className="text-brand-text text-lg mb-8 max-w-md leading-relaxed">
+                                        Decades of experience. Strategists, copywriters, and developers ready to build your legacy.
+                                    </p>
+                                    <span className="inline-block border-b border-brand-text pb-1 text-sm font-bold uppercase tracking-widest text-brand-text">Meet The Team</span>
+                                </div>
+                            </div>
+                            {/* Background Number */}
+                            <div className={`absolute bottom-0 right-0 text-[15rem] font-black leading-none pointer-events-none -mb-10 -mr-10 ${hovered === 'agency' ? 'text-brand-text/5' : 'text-white/5'}`}>02</div>
+                        </div>
+
+                    </div>
+                </section>
+            );
+        };
+
+        const TabbedFeatures = () => {
+            const [activeTab, setActiveTab] = useState(0);
+            const features = [
+                { title: "Build", desc: "Drag-and-drop page builder and powerful themes make professional-looking pages simple." },
+                { title: "Teach", desc: "Two built-in learning management systems give you flexible ways to deliver courses and training." },
+                { title: "Sell", desc: "Integrated WooCommerce lets you sell digital and physical products seamlessly." },
+                { title: "Scale", desc: "Modular design lets you turn off features you don’t use, keeping your site lean." },
+            ];
+
+            return (
+                <section className="py-32 px-6 bg-white border-b border-brand-border">
+                    <div className="grid lg:grid-cols-12 gap-16 max-w-[1400px] mx-auto">
+                        <div className="lg:col-span-5">
+                            <SectionLabel text="Capabilities" />
+                            <h2 className="text-4xl md:text-6xl font-black text-brand-text mb-8 leading-none">
+                                WORRY ABOUT <br/>
+                                BUSINESS. <br/>
+                                <span className="text-brand-muted">NOT TECH.</span>
+                            </h2>
+                            <p className="text-lg text-brand-muted mb-12">
+                                Why piece together 20 plugins when you can have one unified engine?
+                            </p>
+                            <button className="bg-brand-blue text-white px-8 py-4 font-bold text-sm uppercase tracking-wider hover:bg-brand-darkBlue transition-colors">
+                                Start Free Trial
+                            </button>
+                        </div>
+
+                        <div className="lg:col-span-7">
+                            <div className="bg-gray-50 border border-brand-border p-8 md:p-12 h-full">
+                                <div className="flex flex-wrap gap-4 mb-12 border-b border-brand-border pb-1">
+                                    {features.map((f, i) => (
+                                        <button 
+                                            key={i}
+                                            onClick={() => setActiveTab(i)}
+                                            className={`pb-4 px-4 text-sm font-bold uppercase tracking-widest transition-all relative ${activeTab === i ? 'text-brand-blue' : 'text-brand-muted hover:text-brand-text'}`}
+                                        >
+                                            {f.title}
+                                            {activeTab === i && <span className="absolute bottom-0 left-0 w-full h-[3px] bg-brand-blue"></span>}
+                                        </button>
+                                    ))}
+                                </div>
+                                <div className="min-h-[200px] animate-fade-in">
+                                    <h3 className="text-3xl font-bold text-brand-text mb-6">{features[activeTab].title} with Ease.</h3>
+                                    <p className="text-xl text-brand-muted leading-relaxed max-w-xl">
+                                        {features[activeTab].desc}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
+        const Footer = () => {
+            return (
+                <footer className="bg-brand-text text-white pt-24 pb-12 px-6">
+                    <div className="max-w-[1400px] mx-auto text-center border-b border-white/10 pb-24">
+                        <h2 className="text-5xl md:text-7xl font-black tracking-tight mb-8">
+                            NEED A PARTNER?
+                        </h2>
+                        <p className="text-white/60 text-xl mb-12 max-w-2xl mx-auto">
+                            You don't need to be a marketing expert. You just need to know one.
+                        </p>
+                        <button className="bg-white text-brand-text px-10 py-5 font-bold uppercase tracking-widest text-sm hover:bg-brand-blue hover:text-white transition-colors">
+                            Tell Us How We Can Help
+                        </button>
+                    </div>
+
+                    <div className="max-w-[1400px] mx-auto pt-12 grid md:grid-cols-4 gap-12 text-sm text-white/40">
+                        <div>
+                            <div className="text-white font-bold text-lg mb-4">RAINMAKER</div>
+                            <p>Digital marketing done right. Combining platform power with agency expertise.</p>
+                        </div>
+                        <div>
+                            <h4 className="text-white font-bold uppercase tracking-widest mb-4">Platform</h4>
+                            <ul className="space-y-2">
+                                <li><a href="#" className="hover:text-brand-blue transition">Features</a></li>
+                                <li><a href="#" className="hover:text-brand-blue transition">Pricing</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 className="text-white font-bold uppercase tracking-widest mb-4">Services</h4>
+                            <ul className="space-y-2">
+                                <li><a href="#" className="hover:text-brand-blue transition">Strategy</a></li>
+                                <li><a href="#" className="hover:text-brand-blue transition">Content</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 className="text-white font-bold uppercase tracking-widest mb-4">Legal</h4>
+                            <ul className="space-y-2">
+                                <li><a href="#" className="hover:text-brand-blue transition">Privacy</a></li>
+                                <li><a href="#" className="hover:text-brand-blue transition">Terms</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div className="max-w-[1400px] mx-auto pt-12 text-center text-[10px] uppercase tracking-widest text-white/20">
+                        &copy; 2026 Rainmaker Digital Services, LLC.
+                    </div>
+                </footer>
+            );
+        };
+
+        const App = () => {
+            return (
+                <GridShell>
+                    <Nav />
+                    <Hero />
+                    <StickyScrollNarrative />
+                    <InteractiveSplit />
+                    <TabbedFeatures />
+                    <Footer />
+                </GridShell>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
